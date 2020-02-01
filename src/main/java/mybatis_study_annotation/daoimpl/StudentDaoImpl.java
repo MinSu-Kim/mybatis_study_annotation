@@ -61,4 +61,11 @@ public class StudentDaoImpl implements StudentDao {
 	    }
 	}
 
+	@Override
+	public List<Student> selectStudentByAllForResults() {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			return sqlSession.selectList(namespace + ".selectStudentByAllForResults");
+	    }
+	}
+
 }

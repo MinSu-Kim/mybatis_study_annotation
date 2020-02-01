@@ -62,10 +62,20 @@ public class StudentDaoTest extends AbstractTest {
 	}
 
 	@Test
-	public void test5DeleteStudent() {
+	public void test05DeleteStudent() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		int res = dao.deleteStudent(5);
 		Assert.assertEquals(1, res);
 	}
+
+	@Test
+	public void test06SelectStudentByAllForResults() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		List<Student> lists = dao.selectStudentByAllForResults();
+		Assert.assertNotNull(lists);
+		for(Student std : lists) {
+	    	log.debug(std.toString());
+	    }
+	}   
 
 }
