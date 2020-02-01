@@ -3,6 +3,8 @@ package mybatis_study_annotation.dao;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -77,5 +79,57 @@ public class StudentDaoTest extends AbstractTest {
 	    	log.debug(std.toString());
 	    }
 	}   
+
+	@Test
+	public void test07SelectStudentByAllForResultsMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		List<Map<String, Object>> maps = dao.selectStudentByAllForResultsMap();
+		Assert.assertNotNull(maps);
+		for(Map<String, Object> m : maps) {
+			for(Entry<String, Object> e : m.entrySet()) {
+				log.debug(String.format("%s -> %s", e.getKey(), e.getValue()));
+			}
+		}
+	}
+	
+	@Test
+	public void test08SelectStudentByAllForMapper() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		List<Student> lists = dao.selectStudentByAllForMapper();
+		Assert.assertNotNull(lists);
+		for(Student std : lists) {
+	    	log.debug(std.toString());
+	    }
+	}   
+
+	@Test
+	public void test10SelectStudentByAllForResultMapExt() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		List<Student> lists = dao.selectStudentByAllForResultMapExt();
+		Assert.assertNotNull(lists);
+		for(Student std : lists) {
+	    	log.debug(std.toString());
+	    }
+	}
+	
+	@Test
+	public void test11SelectStudentByAllForResultMapExtXML() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		List<Student> lists = dao.selectStudentByAllForResultMapExtXML();
+		Assert.assertNotNull(lists);
+		for(Student std : lists) {
+	    	log.debug(std.toString());
+	    }
+	}
+
+    @Test
+    public void test12SelectStudentOneToOne(){
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Student student = dao.selectStudentOneToOne(1);
+        Assert.assertNotNull(student);
+        log.trace(student.toString());
+    }
+
+
 
 }
