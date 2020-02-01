@@ -8,6 +8,7 @@
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />
 		<result property="dob" column="dob" />
+		<result property="gender" column="gender"/>
 	</resultMap>
 	
 	<resultMap id="StudentWithAddressResult" type="Student" extends="StudentResult">

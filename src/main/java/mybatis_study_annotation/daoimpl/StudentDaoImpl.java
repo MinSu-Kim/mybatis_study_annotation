@@ -113,4 +113,25 @@ public class StudentDaoImpl implements StudentDao {
 		}
 	}
 
+	@Override
+	public Student selectAllStudentByParam(String name, String email) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.getMapper(StudentDao.class).selectAllStudentByParam(name, email);
+		}
+	}
+
+	@Override
+	public Student selectAllStudentByStudent(Student student) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectOne(namespace + ".selectAllStudentByStudent", student);
+		}
+	}
+
+	@Override
+	public Student selectAllStudentByMap(Map<String, String> map) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectOne(namespace + ".selectAllStudentByMap", map);
+		}
+	}
+
 }

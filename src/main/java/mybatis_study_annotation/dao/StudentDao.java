@@ -90,4 +90,23 @@ public interface StudentDao {
 	@Options(useGeneratedKeys = true, keyProperty = "studId")
 	int insertEnumStudent(Student student);
 
+    @Select("select stud_id, name, email, phone, dob, gender from students where name=#{param1} and email=#{param2}")
+    @Results(id="multiParamResult", value={
+        @Result (id=true, column="stud_id", property="studId"),
+        @Result (column="name", property="name"),
+        @Result (column="email", property="email"),
+        @Result (column="phone", property="phone"),
+        @Result (column="dob", property="dob"),   
+        @Result (column="gender", property="gender")
+    })
+    Student selectAllStudentByParam(String name, String email);
+
+    @Select("select stud_id, name, email, phone, dob, gender from students where name=#{name} and email=#{email}")
+    @ResultMap("mappers.StudentMapper.StudentResult")
+    Student selectAllStudentByStudent(Student student);
+
+    @Select("select stud_id, name, email, phone, dob, gender from students where name=#{name} and email=#{email}")
+    @ResultMap("mappers.StudentMapper.StudentResult")
+    Student selectAllStudentByMap(Map<String, String> map);
+
 }
