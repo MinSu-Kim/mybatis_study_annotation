@@ -43,4 +43,13 @@ public class StudentDaoImpl implements StudentDao {
 		}
 	}
 
+	@Override
+	public int updateStudent(Student student) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()) {
+			int res = sqlSession.update(namespace + ".updateStudent", student);
+			sqlSession.commit();
+			return res;
+		}
+	}
+
 }

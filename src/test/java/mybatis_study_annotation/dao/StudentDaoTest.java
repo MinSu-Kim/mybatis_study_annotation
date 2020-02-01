@@ -49,4 +49,16 @@ public class StudentDaoTest extends AbstractTest {
         Assert.assertEquals(1, res);
     }
 
+	@Test
+	public void test04UpdateStudent() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Calendar newDate = GregorianCalendar.getInstance();
+		newDate.set(2000, 4, 28);
+
+		Student student = new Student(5, "홍길동5", "hong@test.co.kr", new PhoneNumber("010-1111-2222"), newDate.getTime());
+
+		int res = dao.updateStudent(student);
+		Assert.assertEquals(1, res);
+	}
+
 }
