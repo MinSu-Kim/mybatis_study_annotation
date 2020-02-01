@@ -1,5 +1,7 @@
 package mybatis_study_annotation.dao;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -23,14 +25,14 @@ public class StudentDaoTest extends AbstractTest {
 		Assert.assertEquals(student.getStudId(), selectStudent.getStudId());
 	}
 
-//	@Test
-//	public void test02SelectStudentByAll() {
-//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-//	    List<Student> lists = dao.selectStudentByAll();
-//	    Assert.assertNotNull(lists);
-//	    for(Student std : lists) {
-//	    	log.debug(std.toString());
-//	    }
-//	}
+	@Test
+	public void test02SelectStudentByAll() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	    List<Student> lists = dao.selectStudentByAll();
+	    Assert.assertNotNull(lists);
+	    for(Student std : lists) {
+	    	log.debug(std.toString());
+	    }
+	}
 	
 }

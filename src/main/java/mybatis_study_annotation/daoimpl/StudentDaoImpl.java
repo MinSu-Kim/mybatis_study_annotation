@@ -1,5 +1,7 @@
 package mybatis_study_annotation.daoimpl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis_study_annotation.dao.StudentDao;
@@ -11,9 +13,7 @@ public class StudentDaoImpl implements StudentDao {
 	
 	private static final StudentDaoImpl instance = new StudentDaoImpl();
 	
-	private StudentDaoImpl() {
-		// TODO Auto-generated constructor stub
-	}
+	private StudentDaoImpl() {}
 
 	public static StudentDaoImpl getInstance() {
 		return instance;
@@ -24,14 +24,13 @@ public class StudentDaoImpl implements StudentDao {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
 			return sqlSession.selectOne(namespace + ".selectStudentByNo", student);
 		}
-
 	}
 
-//	@Override
-//	public List<Student> selectStudentByAll() {
-//		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
-//			return sqlSession.selectList(namespace + ".selectStudentByAll");
-//		}
-//	}
+	@Override
+	public List<Student> selectStudentByAll() {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			return sqlSession.selectList(namespace + ".selectStudentByAll");
+		}
+	}
 
 }
