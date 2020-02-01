@@ -52,4 +52,13 @@ public class StudentDaoImpl implements StudentDao {
 		}
 	}
 
+	@Override
+	public int deleteStudent(int studId) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+	        int res = sqlSession.delete(namespace + ".deleteStudent", studId);
+	        sqlSession.commit();
+	        return res;
+	    }
+	}
+
 }

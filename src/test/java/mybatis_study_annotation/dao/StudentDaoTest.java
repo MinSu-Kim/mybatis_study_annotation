@@ -61,4 +61,11 @@ public class StudentDaoTest extends AbstractTest {
 		Assert.assertEquals(1, res);
 	}
 
+	@Test
+	public void test5DeleteStudent() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		int res = dao.deleteStudent(5);
+		Assert.assertEquals(1, res);
+	}
+
 }
