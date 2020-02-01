@@ -18,5 +18,6 @@
 		</environment>
 	</environments>
 	<mappers>
+		<package name="mybatis_study_annotation.dao"/>
 	</mappers>
 </configuration>
