@@ -68,5 +68,8 @@ public interface StudentDao {
 	@Select("select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s join addresses a on s.addr_id=a.addr_id")
 	List<Student> selectStudentByAllForResultMapExt();
 
+	@Select("select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s join addresses a on s.addr_id=a.addr_id")
+	@ResultMap("mappers.StudentMapper.StudentWithAddressResult")
+	List<Student> selectStudentByAllForResultMapExtXML();
 
 }
