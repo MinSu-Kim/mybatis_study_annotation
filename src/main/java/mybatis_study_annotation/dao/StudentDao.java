@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -83,5 +84,10 @@ public interface StudentDao {
                 one=@One(select="mybatis_study_annotation.dao.AddressDao.selectAddressById"))
     })
     Student selectStudentOneToOne(int studId);
+
+	@Insert("insert into students(stud_id, name, email, phone, dob, gender) "
+		  + "values (#{studId}, #{name}, #{email}, #{phone}, #{dob}, #{gender})")
+	@Options(useGeneratedKeys = true, keyProperty = "studId")
+	int insertEnumStudent(Student student);
 
 }
