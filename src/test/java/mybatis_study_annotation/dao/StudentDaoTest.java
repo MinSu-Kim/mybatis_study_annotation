@@ -122,5 +122,14 @@ public class StudentDaoTest extends AbstractTest {
 	    }
 	}
 
+    @Test
+    public void test12SelectStudentOneToOne(){
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Student student = dao.selectStudentOneToOne(1);
+        Assert.assertNotNull(student);
+        log.trace(student.toString());
+    }
+
+
 
 }

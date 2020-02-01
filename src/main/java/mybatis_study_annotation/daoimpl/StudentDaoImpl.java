@@ -97,4 +97,11 @@ public class StudentDaoImpl implements StudentDao {
 		}
 	}
 
+	@Override
+	public Student selectStudentOneToOne(int studId) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectOne(namespace + ".selectStudentOneToOne", studId);
+		}
+	}
+
 }

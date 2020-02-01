@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -71,5 +72,16 @@ public interface StudentDao {
 	@Select("select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s join addresses a on s.addr_id=a.addr_id")
 	@ResultMap("mappers.StudentMapper.StudentWithAddressResult")
 	List<Student> selectStudentByAllForResultMapExtXML();
+
+	
+    @Select("select * from students where stud_id=#{studId}")
+    @Results({
+        @Result(id=true, column="stud_id", property="studId"),
+        @Result(column="name", property="name"),
+        @Result(column="email", property="email"),
+        @Result(column="addr_id", property="address", 
+                one=@One(select="mybatis_study_annotation.dao.AddressDao.selectAddressById"))
+    })
+    Student selectStudentOneToOne(int studId);
 
 }
