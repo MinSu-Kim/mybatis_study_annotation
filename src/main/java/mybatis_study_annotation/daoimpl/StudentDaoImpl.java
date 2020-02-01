@@ -104,4 +104,13 @@ public class StudentDaoImpl implements StudentDao {
 		}
 	}
 
+	@Override
+	public int insertEnumStudent(Student student) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()) {
+			int res = sqlSession.insert(namespace + ".insertEnumStudent", student);
+			sqlSession.commit();
+			return res;
+		}
+	}
+
 }
