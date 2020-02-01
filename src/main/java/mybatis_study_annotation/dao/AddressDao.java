@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Select;
 import mybatis_study_annotation.dto.Address;
 
 public interface AddressDao {
-	@Select("SELECT ADDR_ID AS ADDRID, STREET, CITY, STATE, ZIP, COUNTRY FROM ADDRESSES WHERE ADDR_ID=#{id}")
+	@Select("select addr_id as addrid, street, city, state, zip, country from addresses where addr_id=#{id}")
 	Address selectAddressById(int id);
 }
