@@ -10,10 +10,11 @@ import mybatis_study_annotation.jdbc.MyBatisSqlSessionFactory;
 
 public class StudentDaoImpl implements StudentDao {
 	private String namespace = "mybatis_study_annotation.dao.StudentDao";
-	
+
 	private static final StudentDaoImpl instance = new StudentDaoImpl();
-	
-	private StudentDaoImpl() {}
+
+	private StudentDaoImpl() {
+	}
 
 	public static StudentDaoImpl getInstance() {
 		return instance;
@@ -28,8 +29,17 @@ public class StudentDaoImpl implements StudentDao {
 
 	@Override
 	public List<Student> selectStudentByAll() {
-		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()) {
 			return sqlSession.selectList(namespace + ".selectStudentByAll");
+		}
+	}
+
+	@Override
+	public int insertStudent(Student student) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()) {
+			int res = sqlSession.insert(namespace + ".insertStudent", student);
+			sqlSession.commit();
+			return res;
 		}
 	}
 

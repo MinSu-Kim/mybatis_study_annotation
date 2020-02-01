@@ -11,6 +11,23 @@ public class Student {
 	private Address address;
 	private Gender gender;
 
+	
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Student(int studId) {
+		this.studId = studId;
+	}
+
+	public Student(int studId, String name, String email, PhoneNumber phone, Date dob) {
+		this.studId = studId;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.dob = dob;
+	}
+
 	public int getStudId() {
 		return studId;
 	}
