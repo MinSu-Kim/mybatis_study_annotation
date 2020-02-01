@@ -1,6 +1,7 @@
 package mybatis_study_annotation.daoimpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -66,6 +67,27 @@ public class StudentDaoImpl implements StudentDao {
 		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
 			return sqlSession.selectList(namespace + ".selectStudentByAllForResults");
 	    }
+	}
+
+	@Override
+	public List<Map<String, Object>> selectStudentByAllForResultsMap() {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectList(namespace + ".selectStudentByAllForResultsMap");
+		}
+	}
+
+	@Override
+	public List<Student> selectStudentByAllForMapper() {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectList(namespace + ".selectStudentByAllForMapper");
+		}
+	}
+
+	@Override
+	public List<Student> selectStudentByAllForResultMapExt() {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+	         return sqlSession.selectList(namespace + ".selectStudentByAllForResultMapExt");
+	      }
 	}
 
 }
