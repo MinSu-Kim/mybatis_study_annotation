@@ -109,4 +109,16 @@ public interface StudentDao {
     @ResultMap("mappers.StudentMapper.StudentResult")
     Student selectAllStudentByMap(Map<String, String> map);
 
+    @Select("select stud_id, name, email, phone, dob, gender from students where stud_id=#{studId}")
+//    @ResultMap("mappers.StudentMapper.StudentResult")
+    @Results(id="ParamResult", value={
+            @Result (id=true, column="stud_id", property="studId"),
+            @Result (column="name", property="name"),
+            @Result (column="email", property="email"),
+            @Result (column="phone", property="phone"),
+            @Result (column="dob", property="dob"),   
+            @Result (column="gender", property="gender")
+        })
+    Map<Integer, String> selectStudentForMap(int studId);
+
 }
