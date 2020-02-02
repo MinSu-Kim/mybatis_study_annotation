@@ -34,7 +34,7 @@ public class TutorDaoImpl implements TutorDao {
 			return sqlSession.selectOne(namespace + ".selectTutorByTutorId", tutor);
 		}
 	}
-/*
+
 	@Override
 	public List<Tutor> selectAllTutorsProv() {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -55,5 +55,5 @@ public class TutorDaoImpl implements TutorDao {
             return sqlSession.selectList(namespace + ".selectTutorByJoinProv", map);
         }
 	}
-*/
+
 }

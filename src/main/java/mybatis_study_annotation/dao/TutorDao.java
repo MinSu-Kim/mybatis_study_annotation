@@ -32,9 +32,9 @@ public interface TutorDao {
 			+ "where t.tutor_id=#{tutorId}")
 	@ResultMap("mappers.TutorMapper.TutorResult")
 	Tutor selectTutorByTutorId(Tutor tutor);
-/*
+
 	//동적 SQL (@SelectProvider)
-	@SelectProvider(type = TutorProvider.class, method = "selectAllTutorsProv")
+	@SelectProvider(type = TutorProvider.class, method = "selectAllTutorProv")
 	List<Tutor> selectAllTutorsProv();
 
 	@SelectProvider(type = TutorProvider.class, method = "selectTutorProv")
@@ -42,5 +42,5 @@ public interface TutorDao {
 
 	@SelectProvider(type = TutorProvider.class, method = "selectTutorByJoinProv")
 	List<Tutor> selectTutorByJoinProv(Map<String, Object> map);
-*/
+
 }
