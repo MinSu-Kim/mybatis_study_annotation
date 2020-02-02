@@ -56,4 +56,31 @@ public class TutorDaoImpl implements TutorDao {
         }
 	}
 
+	@Override
+	public int insertTutor(Tutor tutor) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			int res = sqlSession.insert(namespace + ".insertTutor", tutor);
+	        sqlSession.commit();
+	        return res;
+		}
+	}
+
+	@Override
+	public int updateTutor(Tutor tutor) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			int res = sqlSession.update(namespace + ".updateTutor", tutor);
+	        sqlSession.commit();
+	        return res;
+		}
+	}
+
+	@Override
+	public int deleteTutor(Tutor tutor) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			int res = sqlSession.delete(namespace + ".deleteTutor", tutor);
+	        sqlSession.commit();
+	        return res;
+		}
+	}
+
 }

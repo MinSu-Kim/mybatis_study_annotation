@@ -79,4 +79,39 @@ public class TutorDaoTest extends AbstractTest {
 		for(Tutor t : lists) log.trace(t.toString());
 	}   
 
+	@Test
+	public void test06InsertTutor() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Tutor tutor = new Tutor();
+		tutor.setTutorId(5);
+		tutor.setName("홍");
+		tutor.setEmail("hong@test.co.kr");
+
+		int res = dao.insertTutor(tutor);
+		Assert.assertEquals(1, res);
+	} 
+	
+	@Test
+	public void test07UpdateTutor(){
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+	    Tutor tutor = new Tutor();
+	    tutor.setTutorId(5);
+	    tutor.setName("홍5");
+	    tutor.setEmail("hong5@test.co.kr");
+	        
+	    int res = dao.updateTutor(tutor);
+	    Assert.assertEquals(1, res);
+	}
+
+	@Test
+	public void test08DeleteTutor() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		Tutor tutor = new Tutor();
+		tutor.setTutorId(5);
+		int res = dao.deleteTutor(tutor);
+		Assert.assertEquals(1, res);
+	}  
+
 }
