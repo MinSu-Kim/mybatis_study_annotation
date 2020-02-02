@@ -1,5 +1,8 @@
 package mybatis_study_annotation.daoimpl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis_study_annotation.dao.TutorDao;
@@ -11,12 +14,13 @@ public class TutorDaoImpl implements TutorDao {
 
 	private static final TutorDaoImpl instance = new TutorDaoImpl();
 
-	private TutorDaoImpl() {}
+	private TutorDaoImpl() {
+	}
 
 	public static TutorDaoImpl getInstance() {
 		return instance;
 	}
-	
+
 	@Override
 	public Tutor selectTutorById(int tutorId) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -29,6 +33,27 @@ public class TutorDaoImpl implements TutorDao {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
 			return sqlSession.selectOne(namespace + ".selectTutorByTutorId", tutor);
 		}
+	}
+
+	@Override
+	public List<Tutor> selectAllTutorsProv() {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectList(namespace + ".selectAllTutorsProv");
+		}
+	}
+
+	@Override
+	public List<Tutor> selectTutorProv(Map<String, Object> map) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectList(namespace + ".selectTutorProv", map);
+		}
+	}
+
+	@Override
+	public List<Tutor> selectTutorByJoinProv(Map<String, Object> map) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+            return sqlSession.selectList(namespace + ".selectTutorByJoinProv", map);
+        }
 	}
 
 }
