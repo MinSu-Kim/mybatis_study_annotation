@@ -37,7 +37,7 @@ public class TutorDaoTest extends AbstractTest {
 		Assert.assertNotNull(selTutor);
 		log.trace(selTutor.toString());
 	}
-	
+/*	
 	@Test
 	public void test03SelectAllTutorsProv() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
@@ -78,5 +78,5 @@ public class TutorDaoTest extends AbstractTest {
 		Assert.assertNotNull(lists);
 		for(Tutor t : lists) log.trace(t.toString());
 	}   
-
+*/
 }

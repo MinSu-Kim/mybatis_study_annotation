@@ -143,7 +143,9 @@ public class StudentDaoImpl implements StudentDao {
 		ResultHandler<Student> resultHandler = new ResultHandler<Student>() {
 			@Override
 			public void handleResult(ResultContext<? extends Student> resultContext) {
+				
 				Student student = resultContext.getResultObject();
+				System.out.println(student);
 				map.put(student.getStudId(), student.getName());
 			}
 		};
