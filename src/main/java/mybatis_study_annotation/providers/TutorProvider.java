@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.apache.ibatis.jdbc.SQL;
 
+import mybatis_study_annotation.dto.Tutor;
+
 public class TutorProvider {
 	public String selectAllTutorProv() {
 		return new SQL() {{
@@ -40,5 +42,46 @@ public class TutorProvider {
             }
         }}.toString();
     }
+
+	public String insertTutor(Tutor tutor) {
+		return new SQL() {
+			{
+				INSERT_INTO("TUTORS");
+				if (tutor.getTutorId() != 0) {
+					VALUES("tutor_id", "#{tutorId}");
+				}
+				if (tutor.getName() != null) {
+					VALUES("NAME", "#{name}");
+				}
+				if (tutor.getEmail() != null) {
+					VALUES("EMAIL", "#{email}");
+				}
+			}
+		}.toString();
+    }
+	
+	public String updateTutor(Tutor tutor) {
+	    return new SQL() {
+	       {
+	            UPDATE("TUTORS");
+	            if (tutor.getName() != null) {
+	                SET("NAME=#{name}");
+	            }
+	            if (tutor.getEmail() != null) {
+	                SET("EMAIL=#{email}");
+	            }
+	            WHERE("TUTOR_ID=#{tutorId}");
+	        }
+	    }.toString();
+	}
+
+	public String deleteTutor(Tutor tutor) {
+	    return new SQL() {
+	        {
+	            DELETE_FROM("TUTORS");
+	            WHERE("TUTOR_ID=#{tutorId}");
+	        }
+	    }.toString();
+	}
 
 }
