@@ -187,6 +187,18 @@ public class StudentDaoTest extends AbstractTest {
         maps.put("email", "timothy@gmail.com");
         Student student = dao.selectAllStudentByMap(maps);
         Assert.assertNotNull(student);
+        log.trace(student.toString());
     }
+
+    @Test
+    public void test17SelectStudentForMap() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Map<Integer, String> map = dao.selectStudentForMap(1);
+        Assert.assertNotNull(map);
+        log.debug("map.size() " + map.size());
+        for(Entry<Integer, String> entry : map.entrySet()){
+        	log.trace(String.format("%s - %s", entry.getKey(), entry.getValue()));
+        }
+    }    
 
 }
